@@ -22,4 +22,17 @@ const users = [
 
 exports.find = () => {
     return users;
-}
+};
+
+exports.create = (user) => {
+
+    let isUserValid = 'name' in user;
+    isUserValid &= 'email' in user;
+
+    if (isUserValid) {
+        users.push(user);
+        return user;
+    }
+
+    throw Error('invalid user data')
+};

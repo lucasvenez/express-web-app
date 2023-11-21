@@ -1,12 +1,15 @@
 const express = require('express');
-const userRoutes = require('./src/routes/users')
 
 const port = 3000;
 
 // const databaseConfig = require('./config/database');
 // mongoose.connect(databaseConfig.url, {useNewUrlParser: true})
 
-app = express();
+const app = express();
+const userRoutes = require('./src/routes/users');
+
+app.use(express.json());
+app.use(express.urlencoded({extended: true}));
 
 app.use('/user/', userRoutes);
 
